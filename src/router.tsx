@@ -1,18 +1,32 @@
 import { createBrowserRouter } from 'react-router-dom'
 
 import { Auth, Main, Todo } from './pages'
+import { Layout } from './layout'
 
-export const router = createBrowserRouter([
+type RoutePageType = {
+  element: React.ReactNode
+  path: string
+  isPrivate?: boolean
+}
+
+const pages: RoutePageType[] = [
   {
-    path: '/',
     element: <Main />,
+    path: '/',
   },
   {
-    path: '/auth',
     element: <Auth />,
+    path: '/auth',
   },
   {
-    path: '/todo',
     element: <Todo />,
+    path: '/todo',
   },
-])
+]
+
+export const router = createBrowserRouter(
+  pages.map((page) => ({
+    element: <Layout>{page.element}</Layout>,
+    path: page.path,
+  }))
+)

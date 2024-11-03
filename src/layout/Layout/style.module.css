@@ -1,0 +1,17 @@
+.layout {
+    margin: 0 auto;
+    padding: 1rem 3rem ;
+    height: 80vh;
+    width: 900px;
+    background-color: white;
+}
+
+.main {
+    background-color: #f0f0f0;
+}
+
+.footer {
+    height: 20vh;
+    width: 100%;
+    background-color: #d9d9d9;
+}
