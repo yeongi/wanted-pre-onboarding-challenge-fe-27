@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import { Auth, Main, Todo } from './pages'
+import { Auth, Login, Main, SignUp, Todo } from './pages'
 import { Layout } from './layout'
 
 type RoutePageType = {
@@ -9,18 +9,35 @@ type RoutePageType = {
   isPrivate?: boolean
 }
 
+export const internalPages = {
+  MAIN: '/',
+  AUTH: '/auth',
+  TODO: '/todo',
+  LOGIN: '/login',
+  SIGN_UP: '/sign-up',
+}
+
 const pages: RoutePageType[] = [
   {
     element: <Main />,
-    path: '/',
+    path: internalPages.MAIN,
   },
   {
     element: <Auth />,
-    path: '/auth',
+    path: internalPages.AUTH,
+  },
+  {
+    element: <Login />,
+    path: internalPages.LOGIN,
+  },
+  {
+    element: <SignUp />,
+    path: internalPages.SIGN_UP,
   },
   {
     element: <Todo />,
-    path: '/todo',
+    path: internalPages.TODO,
+    isPrivate: true,
   },
 ]
 
