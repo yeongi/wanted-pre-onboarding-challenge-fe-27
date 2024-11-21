@@ -1,6 +1,6 @@
 import { fetchClient } from '@/api/fetchClient.ts';
 
-type Todo = {
+export type TodoType = {
   id: number;
   title: string;
   content: string;
@@ -9,7 +9,7 @@ type Todo = {
 };
 
 type GetTodosResponse = {
-  data: Todo[];
+  data: TodoType[];
 };
 
 export const getTodos = async (): Promise<GetTodosResponse> => {
@@ -21,7 +21,7 @@ type GetTodoByIdRequest = {
 };
 
 type GetTodoByIdResponse = {
-  data: Todo[];
+  data: TodoType[];
 };
 
 export const getTodoById = async ({
@@ -36,7 +36,7 @@ type PostTodoRequest = {
 };
 
 type PostTodoResponse = {
-  data: Todo;
+  data: TodoType;
 };
 
 export const postTodo = async (
@@ -52,7 +52,7 @@ type PutTodoRequest = {
 };
 
 type PutTodoResponse = {
-  data: Todo;
+  data: TodoType;
 };
 
 export const updateTodo = async ({
