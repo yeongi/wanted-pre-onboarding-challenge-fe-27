@@ -30,7 +30,7 @@ export const getTodoById = async ({
   return fetchClient.getWithToken(`/todos/${id}`);
 };
 
-type PostTodoRequest = {
+export type PostTodoRequest = {
   title: string;
   content: string;
 };
@@ -45,7 +45,7 @@ export const postTodo = async (
   return fetchClient.postWithToken('/todos', params);
 };
 
-type PutTodoRequest = {
+export type PutTodoRequest = {
   id: number;
   title: string;
   content: string;
@@ -62,9 +62,10 @@ export const updateTodo = async ({
   return fetchClient.putWithToken(`/todos/${id}`, body);
 };
 
-type DeleteTodoRequest = {
+export type DeleteTodoRequest = {
   id: number;
 };
+
 type DeleteTodoResponse = {
   data: null;
 };

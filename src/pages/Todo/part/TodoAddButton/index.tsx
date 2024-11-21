@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button.tsx';
 import { TodoForm } from '@/pages/Todo/component/TodoForm';
+import { PostTodoRequest } from '@/api/todo';
 
 type TodoAddButtonProps = {
-  handleTodoRefetch: () => void;
+  handleAddTodo({ title, content }: PostTodoRequest): void;
 };
 
-export const TodoAddButton = ({ handleTodoRefetch }: TodoAddButtonProps) => {
+export const TodoAddButton = ({ handleAddTodo }: TodoAddButtonProps) => {
   const [isTodoFormOpen, setIsTodoFormOpen] = useState(false);
 
   if (!isTodoFormOpen)
@@ -16,8 +17,8 @@ export const TodoAddButton = ({ handleTodoRefetch }: TodoAddButtonProps) => {
     <TodoForm
       handleClose={() => {
         setIsTodoFormOpen(false);
-        handleTodoRefetch();
       }}
+      handleAddTodo={handleAddTodo}
     />
   );
 };

@@ -1,11 +1,17 @@
-import { TodoType } from '@/api/todo';
+import { DeleteTodoRequest, PutTodoRequest, TodoType } from '@/api/todo';
 import { TodoCard } from '@/pages/Todo/part/TodoList/component';
 
 type TodoListProps = {
   todos?: TodoType[];
+  handleDelete: (requestObj: DeleteTodoRequest) => void;
+  handleUpdateTodo: (requestObj: PutTodoRequest) => void;
 };
 
-export const TodoList = ({ todos }: TodoListProps) => {
+export const TodoList = ({
+  todos,
+  handleDelete,
+  handleUpdateTodo,
+}: TodoListProps) => {
   if (!todos) {
     return (
       <section>
@@ -17,7 +23,14 @@ export const TodoList = ({ todos }: TodoListProps) => {
   return (
     <section>
       <h1>할 일 목록 리스트</h1>
-      {todos?.map((todo) => <TodoCard key={todo.id} todo={todo} />)}
+      {todos?.map((todo) => (
+        <TodoCard
+          key={todo.id}
+          todo={todo}
+          handleDelete={handleDelete}
+          handleUpdateTodo={handleUpdateTodo}
+        />
+      ))}
     </section>
   );
 };
